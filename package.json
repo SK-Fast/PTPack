@@ -13,6 +13,12 @@
   "bugs": {
     "url": "https://github.com/SK-Fast/PTPack/issues"
   },
+  "tag": [
+    "polytoria",
+    "cli",
+    "bundler",
+    "lua"
+  ],
   "homepage": "https://github.com/SK-Fast/PTPack/",
   "license": "MIT",
   "type": "module",
@@ -24,6 +30,7 @@
     "luamin": "^1.0.4",
     "node-watch": "^0.7.3",
     "path": "^0.12.7",
+    "update-check": "^1.5.4",
     "xml-js": "^1.6.11",
     "yaml": "^2.0.1",
     "yargs": "^17.4.1"
