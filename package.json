@@ -1,6 +1,6 @@
 {
   "name": "ptpack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Module bundler for Polytoria",
   "main": "index.js",
   "scripts": {
