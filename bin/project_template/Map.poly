@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<game version="1.1.22">
+  <Item class="Environment">
+    <Properties>
+      <int name="Skybox">0</int>
+      <vector3 name="Gravity">
+        <X>0.0000</X>
+        <Y>-85.0000</Y>
+        <Z>0.0000</Z>
+      </vector3>
+      <boolean name="FogEnabled">false</boolean>
+      <float name="FogStartDistance">0.0000</float>
+      <float name="FogEndDistance">250.0000</float>
+      <color name="FogColor">
+        <R>1.0000</R>
+        <G>1.0000</G>
+        <B>1.0000</B>
+        <A>1.0000</A>
+      </color>
+      <string name="Name">Environment</string>
+    </Properties>
+    <Item class="Part">
+      <Properties>
+        <color name="Color">
+          <R>0.0100</R>
+          <G>0.5100</G>
+          <B>0.0000</B>
+          <A>1.0000</A>
+        </color>
+        <boolean name="Anchored">true</boolean>
+        <boolean name="CanCollide">true</boolean>
+        <boolean name="IsSpawn">false</boolean>
+        <boolean name="HideStuds">false</boolean>
+        <int name="Shape">0</int>
+        <int name="Material">6</int>
+        <vector3 name="Velocity">
+          <X>0.0000</X>
+          <Y>0.0000</Y>
+          <Z>0.0000</Z>
+        </vector3>
+        <float name="Drag">0.0000</float>
+        <float name="AngularDrag">0.0500</float>
+        <float name="Mass">1.0000</float>
+        <boolean name="UseGravity">true</boolean>
+        <vector3 name="Position">
+          <X>0.0000</X>
+          <Y>-5.0000</Y>
+          <Z>0.0000</Z>
+        </vector3>
+        <vector3 name="Rotation">
+          <X>0.0000</X>
+          <Y>0.0000</Y>
+          <Z>0.0000</Z>
+        </vector3>
+        <vector3 name="LocalPosition">
+          <X>0.0000</X>
+          <Y>-5.0000</Y>
+          <Z>0.0000</Z>
+        </vector3>
+        <vector3 name="LocalRotation">
+          <X>0.0000</X>
+          <Y>0.0000</Y>
+          <Z>0.0000</Z>
+        </vector3>
+        <vector3 name="Size">
+          <X>256.0000</X>
+          <Y>10.0000</Y>
+          <Z>256.0000</Z>
+        </vector3>
+        <string name="Name">Part</string>
+      </Properties>
+    </Item>
+    <Item class="ScriptInstance">
+      <Properties>
+        <string name="Source">--[[
+    Welcome to your *brand new* PolyPack project!
+    
+    &gt; Quick introduction
+        PolyPack is npm module that let you use require with your Polytoria game,
+        Prevent you to duplicate the same functions over again as :Call function is too buggy
+        and won't let you return any value
+    
+    &gt; What PolyPack do
+        - Let you use require and build it to single place file
+        - Let you return value and yield the code.
+    
+    &gt; What PolyPack does not
+        - PolyPack does not store variables in module globally.
+        - PolyPack is not package manager.(Coming soon)
+
+    &gt; Get started
+        If you're seeing this script, It means that you already setted up a project!
+
+        To run the game, use the following command:
+            ptpack dev
+
+        To build a production game, use the following command:
+            ptpack build
+
+        Optionality you can use --mini flag to automatically minify your scripts
+]]
+
+-- to edit HelloWorld.lua, go to modules/HelloWorld.lua to edit!
+local HelloWorld = require('HelloWorld.lua')
+
+-- Say Hi!
+HelloWorld.Say('Hi!')</string>
+        <string name="Name">Start</string>
+      </Properties>
+    </Item>
+  </Item>
+  <Item class="Lighting">
+    <Properties>
+      <float name="SunBrightness">1.0000</float>
+      <color name="SunColor">
+        <R>1.0000</R>
+        <G>0.9600</G>
+        <B>0.8400</B>
+        <A>1.0000</A>
+      </color>
+      <color name="AmbientColor">
+        <R>0.2100</R>
+        <G>0.2300</G>
+        <B>0.2600</B>
+        <A>1.0000</A>
+      </color>
+      <int name="AmbientSource">0</int>
+      <string name="Name">Lighting</string>
+    </Properties>
+  </Item>
+  <Item class="Players">
+    <Properties>
+      <boolean name="PlayerCollisionEnabled">false</boolean>
+      <string name="Name">Players</string>
+    </Properties>
+  </Item>
+  <Item class="ScriptService">
+    <Properties>
+      <string name="Name">ScriptService</string>
+    </Properties>
+  </Item>
+  <Item class="Hidden">
+    <Properties>
+      <string name="Name">Hidden</string>
+    </Properties>
+  </Item>
+</game>

@@ -1,0 +1,5 @@
+# Original Place file
+place_file: ./Map.poly
+
+# Place file build
+out_place_file: 'build.poly'
