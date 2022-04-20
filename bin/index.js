@@ -9,6 +9,7 @@ import childProcess from 'child_process'
 import nodeWatch from 'node-watch'
 import { getConfiguration, buildProject } from './utils/builder.js'
 import input from 'input';
+import { getClient } from './utils/client.js'
 
 yargs(hideBin(process.argv))
 .command('init <project_name>', 'Create new Polytoria Project.', () => {}, async (argv) => {
@@ -49,35 +50,35 @@ yargs(hideBin(process.argv))
   console.log(`${chalk.greenBright('\n🎉 Successfully built a project!')} ${chalk.gray(`->`)} ${chalk.blueBright(buildTime + 'ms')}`)
   console.log(`${chalk.gray('\n Modules Built: ')} ${chalk.bold(buildResult.modulesCount)}`)
 })
+.command('run', 'Start the project.', () => {}, () => {  
+  const clientInfo = getClient()
+  const versionCount = clientInfo.versionCount
+  const clientPath = clientInfo.clientPath
 
-.command('dev', 'Start a dev server with auto reloading.', () => {}, () => {
-  console.log(chalk.blueBright(`⏳ Locating client installation...`))
-  
-  const appRoaming = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share")
-  const polytoriaClient = path.join(appRoaming, 'Polytoria')
+  const configurations = getConfiguration(process.cwd())
 
-  if (!fs.existsSync(polytoriaClient)) {
-    console.log(chalk.redBright(`❌ Polytoria client installation not found, Please make sure that the client is installed.`))
-    return
-  }
+  buildProject(process.cwd())
 
-  const settingsJson = fs.readFileSync(path.join(polytoriaClient, 'Settings.json'), 'utf8')
-  let settingsData = JSON.parse(settingsJson)
+  console.log('\n')
+  console.log(chalk.blueBright(`⚡ Project started!`))
+  console.log(chalk.gray(`Client Version: ${versionCount}`))
+  console.log(chalk.gray(`Place file path: ${path.resolve(configurations.out_place_file)}`))
+  console.log(chalk.redBright(`Close the client or press Ctrl+C to stop the process.`))
 
-  if (!settingsData['Manifest']['Client']) {
-    console.log(chalk.redBright(`❌ Settings.json is corrupted or formatting changed.`))
-    return
-  }
+  let clientProcess;
 
-  settingsData['Manifest']['Client'] = settingsData['Manifest']['Client'].sort(function compareFn(a, b) {
-    if (parseInt(a.Version) == NaN || parseInt(b.Version) == NaN) {
-      return -1
+  clientProcess = childProcess.execFile(path.join(clientPath, 'Polytoria'), [`-solo`, `${path.resolve(configurations.out_place_file)}`], (error, stdout, stderr) => {
+    if (error) {
+      console.log(chalk.redBright(`❌ Polytoria client failed to start.`))
+      console.log(chalk.redBright(`${error}`))
+      return
     }
-    return a.Version < b.Version ? -1 : 1
   })
-
-  const versionCount = settingsData['Manifest']['Client'][0].Version
-  const clientPath = path.join(polytoriaClient, 'Client', versionCount)
+})
+.command('dev', 'Start a dev server with auto reloading.', () => {}, () => {
+  const clientInfo = getClient()
+  const versionCount = clientInfo.versionCount
+  const clientPath = clientInfo.clientPath
 
   const configurations = getConfiguration(process.cwd())
 
@@ -85,6 +86,7 @@ yargs(hideBin(process.argv))
   console.log(chalk.blueBright(`PolyPack Development Server`))
   console.log(chalk.gray(`Client Version: ${versionCount}`))
   console.log(chalk.gray(`Place file path: ${path.resolve(configurations.out_place_file)}`))
+  console.log(chalk.redBright(`Close the client or press Ctrl+C to stop the process.`))
 
   let clientProcess;
   let scriptUpdating = false;
