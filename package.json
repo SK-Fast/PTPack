@@ -1,7 +1,7 @@
 {
   "name": "ptpack",
-  "version": "1.0.0",
-  "description": "git control for pole toria",
+  "version": "1.0.1",
+  "description": "Module bundler for Polytoria",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +9,12 @@
   "bin": {
     "ptpack": "./bin/index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "devpixels",
+  "bugs": {
+    "url": "https://github.com/SK-Fast/PTPack/issues"
+  },
+  "homepage": "https://github.com/SK-Fast/PTPack/",
+  "license": "MIT",
   "type": "module",
   "dependencies": {
     "@xmldom/xmldom": "^0.8.2",
