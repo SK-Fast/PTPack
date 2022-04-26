@@ -100,8 +100,8 @@
         Optionality you can use --mini flag to automatically minify your scripts
 ]]
 
--- to edit HelloWorld.lua, go to modules/HelloWorld.lua to edit!
-local HelloWorld = require('HelloWorld.lua')
+-- to edit HelloWorld.lua, go to ModuleScripts &gt; HelloWorld to edit!
+local HelloWorld = require('HelloWorld')
 
 -- Say Hi!
 HelloWorld.Say('Hi!')</string>
@@ -143,5 +143,25 @@ HelloWorld.Say('Hi!')</string>
     <Properties>
       <string name="Name">Hidden</string>
     </Properties>
+  </Item>
+  <Item class="StringValue">
+    <Properties>
+      <string name="Value">
+      </string>
+      <string name="Name">ModuleScripts</string>
+    </Properties>
+    <Item class="ScriptInstance">
+      <Properties>
+        <string name="Source">local module = {}
+
+function module.Say(word)
+    print(word)
+    return true
+end
+
+return module</string>
+        <string name="Name">HelloWorld</string>
+      </Properties>
+    </Item>
   </Item>
 </game>

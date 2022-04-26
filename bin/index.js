@@ -13,8 +13,6 @@ import { getClient } from './utils/client.js'
 
 yargs(hideBin(process.argv))
 .command('init <project_name>', 'Create new Polytoria Project.', () => {}, async (argv) => {
-  console.info(argv)
-
     if (argv.project_name) {
       console.log(chalk.blueBright(`Creating new Polytoria project: ${argv.project_name}`))
       const projectPath = path.resolve(process.cwd(), argv.project_name)
